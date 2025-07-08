@@ -50,6 +50,7 @@ function lire_dossier()
             foreach($photos as $photo): ?>
             <div class="post">
             <img src="photos/<?php echo $photo ?>">
+            <?php echo $photo ?>
             </div>
             <?php endforeach; ?>
     </div>

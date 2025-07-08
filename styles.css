@@ -22,10 +22,13 @@ main {
     align-items: center;
     margin: 3rem 0;
     color: white;
+    text-align: center;
+    gap: 1rem;
 }
 
 .gallery img{
     width: 70%;
+    
 }
 
 .ajoutez{
