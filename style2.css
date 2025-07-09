@@ -6,6 +6,10 @@
 
 body{
     background-color: #7ad4f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 main{
@@ -35,4 +39,11 @@ main .retour a{
     text-decoration: none;
     color: black;
     font-size: 2rem;
+}*
+
+.try form{
+    margin: 10rem 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

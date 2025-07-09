@@ -2,25 +2,20 @@
 
 function lire_dossier()
 {
-    $photos = [];
-    try {
+    $file_names = [];
+    
         $photos_dir = opendir("photos");
 
         do {
             $file_name = readdir($photos_dir);
             // Je n'affiche pas les fichiers cachés (commençant par un point) et les répertoires spéciaux "." et ".."
             if ($file_name && $file_name != "." && $file_name != ".." && $file_name != "/") {
-                $photos[] = $file_name; // J'ajoute le nom du fichier à la liste
+                $file_names[] = $file_name; // J'ajoute le nom du fichier à la liste
             }
         } while ($file_name);
-    } catch (\Throwable $th) {
-        throw $th;
-    }
-    return $photos;
+        return $file_names;
+    
 }
-
-
-
 ?>
 
 
@@ -45,43 +40,39 @@ function lire_dossier()
 
    
     <div class="gallery">
-        <?php
+
+        <?php 
         $photos = lire_dossier();
-            foreach($photos as $photo): ?>
-            <div class="post">
-            <img src="photos/<?php echo $photo ?>">
-            <?php echo $photo ?>
-            </div>
+            foreach ($photos as $photo) : ?>
+        <div class="post">  
+            
+            <?php 
+                $divise = explode("-",$photo);
+                
+                $autheur = $divise[0];
+                $jour = $divise[1];
+                $mois = $divise[2];
+                $year = $divise[3];
+            ?> 
+
+
+            <img src="photos/<?php echo $photo ?>" alt="">
+            <p class="big"><?php echo $autheur ?></p>
+            <p class="petit"><?php echo $jour."/".$mois."/".$year ?></p>
+            
+            
             <?php endforeach; ?>
+        </div>
+            
+        
+        <div class="send">
+            <a href="upload.php"><img src="images/plus.png" alt=""></a>
+        </div>
     </div>
 
 </main>
 
-<footer>
 
-    <div class="tout">
-        
-        <form method="post" action="index.php" enctype="multipart/form-data">
-
-            <img src="images/gallery.png" style="width: 60px;">
-
-            <input type="file" id="photo" name="photo" accept="image/*" style="display:none;">
-            <label for="photo">
-                <img src="images/plus.png" alt="Ajouter une photo" style="cursor:pointer; width:60px;">
-            </label>
-
-            <input id="submit"type="submit"  value="envoyer" style="display: none;">
-            <label for="submit">
-                <img src="images/arrow.png" alt="Envoyer" style="cursor: pointer;width:45px;">
-            </label>
-
-        </form>
-
-        <?php $save = $_FILES["photo"]["tmp_name"];
-        move_uploaded_file($save,"photos/".$_FILES["photo"]["name"]); ?>
-    </div>
-
-</footer>
 
 </body>
 
