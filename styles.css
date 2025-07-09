@@ -37,8 +37,20 @@ main {
     background-image: url(images/plus.png);
 }
 
-.post{
+.send {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; 
+    text-align: center;
+    z-index: 100;
+    padding: 10px 0;
     
+}
+
+.gallery .post {
+    margin-bottom: 80px;
 }
 
 .post .big{
