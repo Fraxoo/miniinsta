@@ -33,10 +33,14 @@ body{
     height: fit-content;
     margin:2rem 0 2rem 0;
     justify-content: center;
-    text-align: center;
-    
+    width: 80%;
 }
 
+
+.para{
+    position: relative;
+    right: 24%;
+}
 
 .para .big{
     font-weight: bold;
